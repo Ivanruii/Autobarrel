@@ -5,6 +5,10 @@
   "version": "1.0.0",
   "icon": "assets/logo.png",
   "publisher": "Ivanruii",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ivanruii/Autobarrel"
+  },
   "galleryBanner": {
     "color": "#3c3c3c",
     "theme": "dark"
