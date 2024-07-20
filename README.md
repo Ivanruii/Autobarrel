@@ -14,7 +14,7 @@
 
 1. Open Visual Studio Code.
 2. Go to the Extensions view (square icon in the sidebar).
-3. Search for `AutoBarrel` and install it.
+3. Search for [AutoBarrel](https://marketplace.visualstudio.com/items?itemName=Ivanruii.autobarrel&ssr=false#qna) and install it.
 4. Restart Visual Studio Code if necessary.
 
 ## 🚀 Usage
