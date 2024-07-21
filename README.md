@@ -46,6 +46,10 @@ You can customize the extension's behavior through VSCode settings. Go to `File 
 }
 ```
 
+## ⏰ Changelog
+
+Take a look at the [changelog of the extension](./CHANGELOG.md).
+
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to create issues and Pull Requests.
