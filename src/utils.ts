@@ -16,17 +16,21 @@ export function getUserConfig() {
 export async function getItemsToExport(dir: string): Promise<Set<string>> {
   const result = new Set<string>();
   const items = fs.readdirSync(dir);
+  const { fileExtension } = getUserConfig();
 
   for (const item of items) {
     const fullPath = path.join(dir, item);
     if (fs.statSync(fullPath).isDirectory()) {
-      if (fs.existsSync(path.join(fullPath, "index.ts"))) {
+      if (fs.existsSync(path.join(fullPath, `index${fileExtension}`))) {
         result.add(fullPath);
       } else {
         const subdirFilesAndDirs = await getItemsToExport(fullPath);
         subdirFilesAndDirs.forEach((fileOrDir) => result.add(fileOrDir));
       }
-    } else if (fullPath.endsWith(".ts") && !fullPath.endsWith("index.ts")) {
+    } else if (
+      fullPath.endsWith(fileExtension) &&
+      !fullPath.endsWith(`index${fileExtension}`)
+    ) {
       result.add(fullPath);
     }
   }
