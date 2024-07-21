@@ -2,7 +2,7 @@
   "name": "autobarrel",
   "displayName": "Autobarrel",
   "description": "Create automatic barrels in your projects.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "icon": "assets/logo.png",
   "publisher": "Ivanruii",
   "repository": {
@@ -25,8 +25,21 @@
       {
         "command": "autobarrel.createBarrel",
         "title": "Create Barrel"
+      },
+      {
+        "command": "autobarrel.updateBarrel",
+        "title": "Update Barrel"
       }
     ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "autobarrel.updateBarrel",
+          "when": "resourceFilename == 'index.ts' || resourceFilename == 'index.js'",
+          "group": "navigation@10"
+        }
+      ]
+    },
     "configuration": {
       "type": "object",
       "title": "Barrel File Configuration",

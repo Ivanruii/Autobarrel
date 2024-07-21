@@ -41,3 +41,24 @@ export async function createBarrelFile() {
 
   vscode.window.showInformationMessage("Barrel file created successfully.");
 }
+
+export async function updateBarrelFile(uri: vscode.Uri) {
+  const selectedFolderPath = path.dirname(uri.fsPath);
+
+  const itemsToExport = await getItemsToExport(selectedFolderPath);
+
+  const userConfig = getUserConfig();
+  const { removeExtension, fileExtension } = userConfig;
+
+  const barrelFilePath = path.join(selectedFolderPath, `index${fileExtension}`);
+
+  const barrelContent = generateBarrelContent(
+    itemsToExport,
+    selectedFolderPath,
+    removeExtension,
+    fileExtension
+  );
+  fs.writeFileSync(barrelFilePath, barrelContent, "utf8");
+
+  vscode.window.showInformationMessage("Barrel file updated successfully.");
+}
