@@ -2,7 +2,7 @@
   "name": "autobarrel",
   "displayName": "Autobarrel",
   "description": "Create automatic barrels in your projects.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "icon": "assets/logo.png",
   "publisher": "Ivanruii",
   "repository": {

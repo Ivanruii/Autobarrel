@@ -2,6 +2,8 @@
 
 **AutoBarrel** is a Visual Studio Code extension that simplifies the creation of barrel files (`index.ts` or `index.js`) in your TypeScript or JavaScript projects. A barrel file centralizes exports from a directory, making imports easier and cleaner in other files.
 
+!['Autobarrel extension demonstration gif'](./assets/barrel-example.gif)
+
 ## ✨ Features
 
 - **Automatic Barrel File Creation**: Creates an `index.ts` or `index.js` file in the selected directory, automatically exporting all modules within that directory.
