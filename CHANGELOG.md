@@ -27,3 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added updated barrel at navigation (right-click on a barrel).
+
+## [1.1.1] - 2024-07-21
+
+### Added
+
+- Added autobarrel extension demostration gif to README.md
