@@ -34,8 +34,7 @@ export async function createBarrelFile() {
   const barrelContent = generateBarrelContent(
     itemsToExport,
     selectedFolderPath,
-    removeExtension,
-    fileExtension
+    removeExtension
   );
   fs.writeFileSync(barrelFilePath, barrelContent, "utf8");
 
@@ -55,8 +54,7 @@ export async function updateBarrelFile(uri: vscode.Uri) {
   const barrelContent = generateBarrelContent(
     itemsToExport,
     selectedFolderPath,
-    removeExtension,
-    fileExtension
+    removeExtension
   );
   fs.writeFileSync(barrelFilePath, barrelContent, "utf8");
 

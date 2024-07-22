@@ -2,6 +2,17 @@ import * as vscode from "vscode";
 import * as path from "path";
 import * as fs from "fs";
 
+// TODO: Add consts file
+const SUPPORTED_EXTENSIONS = [
+  ".ts",
+  ".tsx",
+  ".js",
+  ".jsx",
+  ".astro",
+  ".vue",
+  ".svelte",
+];
+
 export function getUserConfig() {
   const removeExtension = vscode.workspace
     .getConfiguration()
@@ -28,7 +39,7 @@ export async function getItemsToExport(dir: string): Promise<Set<string>> {
         subdirFilesAndDirs.forEach((fileOrDir) => result.add(fileOrDir));
       }
     } else if (
-      fullPath.endsWith(fileExtension) &&
+      SUPPORTED_EXTENSIONS.some((ext) => fullPath.endsWith(ext)) &&
       !fullPath.endsWith(`index${fileExtension}`)
     ) {
       result.add(fullPath);
@@ -41,8 +52,7 @@ export async function getItemsToExport(dir: string): Promise<Set<string>> {
 export function generateBarrelContent(
   itemsToExport: Set<string>,
   rootPath: string,
-  removeExtension: boolean,
-  fileExtension: string
+  removeExtension: boolean
 ): string {
   const exports = Array.from(itemsToExport)
     .map((item) => {
@@ -55,9 +65,9 @@ export function generateBarrelContent(
 
       let exportPath = `./${relativePath}`;
       if (removeExtension) {
-        exportPath = exportPath.replace(/\.ts$/, "").replace(/\.js$/, "");
-      } else {
-        exportPath = exportPath.replace(/\.ts$/, fileExtension);
+        SUPPORTED_EXTENSIONS.forEach((ext) => {
+          exportPath = exportPath.replace(new RegExp(`\\${ext}$`), "");
+        });
       }
 
       return `export * from '${exportPath}';`;
