@@ -1,16 +1,17 @@
 import * as vscode from "vscode";
 import { createBarrelFile, updateBarrelFile } from "./business";
+import { EXTENSION_COMMANDS } from "./consts";
 
 export function activate(context: vscode.ExtensionContext) {
-  let createDisposable = vscode.commands.registerCommand(
-    "autobarrel.createBarrel",
+  const createDisposable = vscode.commands.registerCommand(
+    EXTENSION_COMMANDS.createBarrel,
     async () => {
       await createBarrelFile();
     }
   );
 
-  let updateDisposable = vscode.commands.registerCommand(
-    "autobarrel.updateBarrel",
+  const updateDisposable = vscode.commands.registerCommand(
+    EXTENSION_COMMANDS.updateBarrel,
     async (uri: vscode.Uri) => {
       await updateBarrelFile(uri);
     }

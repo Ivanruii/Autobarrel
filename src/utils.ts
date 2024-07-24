@@ -1,25 +1,15 @@
 import * as vscode from "vscode";
 import * as path from "path";
 import * as fs from "fs";
-
-// TODO: Add consts file
-const SUPPORTED_EXTENSIONS = [
-  ".ts",
-  ".tsx",
-  ".js",
-  ".jsx",
-  ".astro",
-  ".vue",
-  ".svelte",
-];
+import { EXTENSION_CONFIGS, SUPPORTED_EXTENSIONS } from "./consts";
 
 export function getUserConfig() {
   const removeExtension = vscode.workspace
     .getConfiguration()
-    .get<boolean>("autobarrel.removeExtension", true);
+    .get<boolean>(EXTENSION_CONFIGS.removeExtension, true);
   const useJavaScript = vscode.workspace
     .getConfiguration()
-    .get<boolean>("autobarrel.useJavaScript", false);
+    .get<boolean>(EXTENSION_CONFIGS.useJavaScript, false);
   const fileExtension = useJavaScript ? ".js" : ".ts";
   return { removeExtension, fileExtension };
 }
